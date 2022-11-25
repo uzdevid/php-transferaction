@@ -1,0 +1,27 @@
+{
+  "name": "uzdevid/php-transferaction",
+  "description": "Transaction Transfer",
+  "type": "php-package",
+  "keywords": [
+    "php",
+    "package",
+    "yii2",
+    "extension",
+    "transaction transfer"
+  ],
+  "license": "BSD-4-Clause",
+  "authors": [
+    {
+      "name": "Ibragimov Diyorbek",
+      "email": "uzdevid@gmail.com"
+    }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "uzdevid\\transferaction\\": ""
+    }
+  }
+}
