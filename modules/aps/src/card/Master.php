@@ -26,7 +26,7 @@ class Master extends Request {
         foreach ($response['aps']['data'] as $card)
             if ($card['id'] == $id)
                 return ['ok' => true, 'aps' => ['data' => $card]];
-        return ['ok' => false, 'message' => 'card not found'];
+        return ['ok' => false, 'error' => 'card not found'];
     }
 
     public function toService($params) {
