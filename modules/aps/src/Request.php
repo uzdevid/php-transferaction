@@ -6,6 +6,7 @@ class Request {
     protected $url;
     protected $headers;
     protected $raw;
+    protected $timeout = 0;
 
     protected function sendPost() {
         $curl = curl_init();
@@ -16,6 +17,7 @@ class Request {
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($this->raw, JSON_UNESCAPED_UNICODE));
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
         $response = curl_exec($curl);
         curl_close($curl);
         return json_decode($response, true);
@@ -33,6 +35,11 @@ class Request {
 
     protected function raw($raw) {
         $this->raw = $raw;
+        return $this;
+    }
+
+    protected function timeout($seconds) {
+        $this->timeout = $seconds;
         return $this;
     }
 
