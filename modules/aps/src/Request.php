@@ -17,7 +17,7 @@ class Request {
         curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($this->raw, JSON_UNESCAPED_UNICODE));
         curl_setopt($curl, CURLOPT_HTTPHEADER, $this->headers);
-        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->timeout);
+        curl_setopt($curl, CURLOPT_CONNECTTIMEOUT, $this->timeout);
         $response = curl_exec($curl);
         curl_close($curl);
         return json_decode($response, true);
@@ -58,6 +58,7 @@ class Request {
         return $this->headers($this->card->aps->headers())
             ->raw($raw)
             ->url($this->card->aps->baseUrl, $this->card->aps->version, $path)
+            ->timeout(120)
             ->sendPost();
     }
 }
